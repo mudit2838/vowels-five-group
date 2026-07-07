@@ -21,7 +21,7 @@ export const brands: Brand[] = [
     category: "Premium Clothing",
     description: "Our flagship luxury apparel label merging timeless craftsmanship with modern technical execution. Launching late 2026.",
     status: "live",
-    url: "https://qram-clothing.com", // external link
+    url: "https://qram-topaz.vercel.app", // external link
     slug: "qram",
     longDescription: "QRAM represents the physical manifestation of Vowels Five Group's core philosophy: uncompromising quality, premium presentation, and detail-oriented craftsmanship. Positioned as a luxury fashion label, QRAM blends heavy-gram organic fabrics, custom hardware, and ergonomic tailoring to create garment structures built to last a lifetime.",
     details: {
