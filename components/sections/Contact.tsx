@@ -17,6 +17,7 @@ interface FormState {
 
 export const Contact: React.FC = () => {
   const reducedMotion = useReducedMotion();
+  const [showMap, setShowMap] = useState(false);
   const [formData, setFormData] = useState<FormState>({
     name: "",
     email: "",
@@ -257,17 +258,44 @@ export const Contact: React.FC = () => {
           </GlassCard>
 
           {/* Google Maps Embed iframe (Styled) */}
-          <div className="relative w-full aspect-video sm:aspect-auto sm:flex-grow min-h-[220px] rounded-card overflow-hidden border border-border-subtle bg-bg-secondary shadow-ambient">
-            <iframe
-              src="https://maps.google.com/maps?q=Dhampur,%20Bijnor,%20Uttar%20Pradesh,%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) grayscale(100%) opacity(85%)" }}
-              allowFullScreen={false}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Vowels Five Group Headquarters Location map"
-            ></iframe>
+          <div className="relative w-full aspect-video sm:aspect-auto sm:flex-grow min-h-[260px] rounded-card overflow-hidden border border-border-subtle bg-bg-secondary shadow-ambient flex flex-col items-center justify-center transition-all duration-300">
+            {showMap ? (
+              <iframe
+                src="https://maps.google.com/maps?q=Dhampur,%20Bijnor,%20Uttar%20Pradesh,%20India&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, filter: "invert(90%) hue-rotate(180deg) grayscale(100%) opacity(85%)" }}
+                allowFullScreen={false}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Vowels Five Group Headquarters Location map"
+              ></iframe>
+            ) : (
+              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 bg-gradient-to-b from-[#101010]/80 to-[#050505]/95 text-center group">
+                {/* Abstract road grid visual background */}
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:16px_16px]"></div>
+                
+                <div className="relative z-10 flex flex-col items-center gap-4">
+                  <div className="w-12 h-12 rounded-full bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center text-accent-blue shadow-[0_0_20px_rgba(99,102,241,0.15)] transition-transform duration-500 group-hover:scale-110">
+                    <MapPin className="w-6 h-6 animate-pulse" />
+                  </div>
+                  <div className="flex flex-col gap-1">
+                    <h4 className="text-sm font-semibold text-white tracking-wide">Interactive Location Map</h4>
+                    <p className="text-xs text-text-secondary max-w-[280px]">
+                      Dhampur, Bijnor, Uttar Pradesh, India
+                    </p>
+                  </div>
+                  <Button
+                    variant="glass"
+                    size="sm"
+                    className="mt-2 text-xs border border-white/10 hover:border-accent-blue/30 shadow-md hover:bg-accent-blue/5"
+                    onClick={() => setShowMap(true)}
+                  >
+                    Activate Map
+                  </Button>
+                </div>
+              </div>
+            )}
           </div>
 
         </motion.div>

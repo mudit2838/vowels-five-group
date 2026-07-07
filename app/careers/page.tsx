@@ -111,6 +111,16 @@ export default function CareersPage() {
                         <div
                           onClick={() => toggleExpand(role.id)}
                           className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 cursor-pointer"
+                          role="button"
+                          tabIndex={0}
+                          aria-expanded={isExpanded}
+                          aria-label={`Toggle details for ${role.title}`}
+                          onKeyDown={(e) => {
+                            if (e.key === "Enter" || e.key === " ") {
+                              e.preventDefault();
+                              toggleExpand(role.id);
+                            }
+                          }}
                         >
                           <div className="flex flex-col gap-2">
                             <div className="flex items-center flex-wrap gap-2.5">

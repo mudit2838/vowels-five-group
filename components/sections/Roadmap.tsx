@@ -77,7 +77,6 @@ export const Roadmap: React.FC = () => {
                   )}
                 </div>
 
-                {/* Milestone Card */}
                 <motion.div
                   initial="hidden"
                   whileInView="visible"
@@ -85,6 +84,16 @@ export const Roadmap: React.FC = () => {
                   variants={fadeUpVariants(reducedMotion || false)}
                   className={`w-full sm:w-[45%] cursor-pointer`}
                   onClick={() => handleMilestoneClick(milestone.year)}
+                  role="button"
+                  tabIndex={0}
+                  aria-expanded={!!isOpen}
+                  aria-label={`Milestone year ${milestone.year}`}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      handleMilestoneClick(milestone.year);
+                    }
+                  }}
                 >
                   <GlassCard
                     className={`border transition-all duration-300 ${isOpen

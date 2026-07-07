@@ -113,6 +113,15 @@ export const Hero: React.FC = () => {
         transition={{ delay: 1.5, duration: 2, repeat: Infinity }}
         onClick={() => handleScrollTo("about")}
         className="absolute bottom-8 cursor-pointer text-text-secondary hover:text-text-primary transition-colors flex flex-col items-center gap-2"
+        role="button"
+        tabIndex={0}
+        aria-label="Scroll down to About section"
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            handleScrollTo("about");
+          }
+        }}
       >
         <span className="text-[10px] uppercase tracking-[0.2em] font-medium">Scroll</span>
         <ArrowDown className="w-4 h-4" />
